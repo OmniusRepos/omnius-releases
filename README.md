@@ -7,8 +7,13 @@ Official releases for **Omnius** — self-hosted streaming server and client app
 ### Docker (Recommended)
 
 ```bash
-docker pull ghcr.io/omniusrepos/omnius-server:latest
-docker run -d -p 8080:8080 -v omnius-data:/app/data ghcr.io/omniusrepos/omnius-server:latest
+docker run -d \
+  --name omnius \
+  -p 8080:8080 \
+  -e LICENSE_KEY=YOUR_LICENSE_KEY \
+  -e ADMIN_PASSWORD=your_secure_password \
+  -v omnius-data:/app/data \
+  ghcr.io/omniusrepos/omnius-server:latest
 ```
 
 Multi-arch image supporting `linux/amd64` and `linux/arm64`.
@@ -40,6 +45,7 @@ The server runs on port `8080` by default and stores data in `./data/`.
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `LICENSE_KEY` | — | License key from [omnius.stream](https://omnius.stream) |
+| `ADMIN_PASSWORD` | — | Admin panel password |
 | `PORT` | `8080` | Server port |
 
 ## Client Apps
