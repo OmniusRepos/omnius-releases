@@ -1,8 +1,50 @@
 # Omnius Releases
 
-Official releases for the **Omnius** streaming app.
+Official releases for **Omnius** — self-hosted streaming server and client apps.
 
-## Downloads
+## Server
+
+### Docker (Recommended)
+
+```bash
+docker pull ghcr.io/omniusrepos/omnius-server:latest
+docker run -d -p 8080:8080 -v omnius-data:/app/data ghcr.io/omniusrepos/omnius-server:latest
+```
+
+Multi-arch image supporting `linux/amd64` and `linux/arm64`.
+
+| Tag | Description |
+|-----|-------------|
+| `latest` | Latest stable release |
+| `1.1.0` | Pinned version |
+
+### Binary
+
+Download server binaries from the [Releases](https://github.com/OmniusRepos/omnius-releases/releases) page.
+
+| Platform | File |
+|----------|------|
+| Linux x86_64 | `omnius-linux-amd64` |
+| Linux ARM64 | `omnius-linux-arm64` |
+| macOS ARM64 | `omnius-darwin-arm64` |
+
+```bash
+chmod +x omnius-linux-amd64
+./omnius-linux-amd64
+```
+
+The server runs on port `8080` by default and stores data in `./data/`.
+
+### Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `LICENSE_KEY` | — | License key from [omnius.stream](https://omnius.stream) |
+| `PORT` | `8080` | Server port |
+
+## Client Apps
+
+### Downloads
 
 Check the [Releases](https://github.com/OmniusRepos/omnius-releases/releases) page for the latest builds.
 
@@ -13,13 +55,11 @@ Check the [Releases](https://github.com/OmniusRepos/omnius-releases/releases) pa
 | Windows | `.msi` | x64 |
 | Android TV | `.apk` | arm64 / universal |
 
-## Install
+### Install
 
-### macOS
-Download the `.dmg`, open it, and drag Omnius to Applications.
+**macOS** — Download the `.dmg`, open it, and drag Omnius to Applications.
 
-### Linux
-**AppImage** (any distro):
+**Linux AppImage** (any distro):
 ```bash
 chmod +x Omnius_*.AppImage
 ./Omnius_*.AppImage
@@ -30,23 +70,24 @@ chmod +x Omnius_*.AppImage
 sudo dpkg -i omnius_*.deb
 ```
 
-### Windows
-Download and run the `.msi` installer.
+**Windows** — Download and run the `.msi` installer.
 
-### Android TV
-Sideload the `.apk` via ADB:
+**Android TV** — Sideload via ADB:
 ```bash
 adb install -r omnius-*.apk
 ```
 
-## Auto-Updates
+### Auto-Updates
 
 The desktop app checks for updates automatically on launch. Updates are signed and verified before installation.
+
+The server checks for updates from Settings > Update. Docker deployments show a redeploy notice instead.
 
 ## Issues
 
 Found a bug or have a feature request? [Open an issue](https://github.com/OmniusRepos/omnius-releases/issues).
 
-## Server
+## Links
 
-Omnius apps connect to a self-hosted Omnius server. See [omnius.stream/server](https://omnius.stream/server) for deployment instructions.
+- [omnius.stream](https://omnius.stream) — Get a license key
+- [Docker Image](https://ghcr.io/omniusrepos/omnius-server) — Container registry
